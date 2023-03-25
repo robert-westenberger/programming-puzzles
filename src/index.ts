@@ -1,17 +1,37 @@
-import {expect} from 'expect';
-import { kadanesRecursive4, kadanesRecursive, kadanesIterative, kadanesRecursive2, kadanesRecursive3 } from "./kadanes";
-import { flatten } from "./flatten";
+// import {expect} from 'expect';
+// import { kadanesRecursive4, kadanesRecursive, kadanesIterative, kadanesRecursive2, kadanesRecursive3 } from "./kadanes";
+// import { flatten } from "./flatten";
 // import { throttle } from "./throttle";
-import { debounce } from './debounce';
+// import { debounce } from './debounce';
+import { curry as curryWithPlaceholder } from "./curryWithPlaceholder";
 
-const testFn = (arg1: number, arg2: number) => {
-  console.log(arg1, arg2);
+
+const  join = (a: number, b: number, c: number) => {
+   return `${a}_${b}_${c}`
 }
-const debounceTest = debounce(testFn, 1);
-for (let i =0; i < 1000000; i++ ) {
-  // console.log('foo..');
-  debounceTest(Math.random(), Math.random());
-}
+
+const curriedJoin = curryWithPlaceholder(join)
+const _ = curryWithPlaceholder.placeholder
+
+// const t1 = curriedJoin(1, 2, 3) // '1_2_3'
+
+// const t2 = curriedJoin(_, 2)(1, 3) // '1_2_3'
+// console.log(t2);
+const t3 = curriedJoin(_, _, _)(1)(_, 3)(2) // '1_2_3'
+
+// console.log(t1, t2, t3);
+
+
+
+
+// const testFn = (arg1: number, arg2: number) => {
+//   console.log(arg1, arg2);
+// }
+// const debounceTest = debounce(testFn, 1);
+// for (let i =0; i < 1000000; i++ ) {
+//   // console.log('foo..');
+//   debounceTest(Math.random(), Math.random());
+// }
 // run(['A@0', 'B@2', 'C@3']);
 // expect(run(['A@0', 'B@2', 'C@3'])).toEqual(['A@0', 'C@3']);
 // const arr = [1, [2], [3, [4]]];

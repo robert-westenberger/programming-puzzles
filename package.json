@@ -13,9 +13,9 @@
   "license": "ISC",
   "devDependencies": {
     "@tsconfig/node18": "1.0.1",
-    "concurrently": "^7.6.0",
-    "expect": "^29.5.0",
-    "nodemon": "^2.0.21",
+    "concurrently": "7.6.0",
+    "expect": "29.5.0",
+    "nodemon": "2.0.21",
     "typescript": "5.0.2"
   }
 }
