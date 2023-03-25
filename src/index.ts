@@ -3,21 +3,36 @@
 // import { flatten } from "./flatten";
 // import { throttle } from "./throttle";
 // import { debounce } from './debounce';
-import { curry as curryWithPlaceholder } from "./curryWithPlaceholder";
+// import { curry as curryWithPlaceholder } from "./curryWithPlaceholder";
+import { memo } from "./memo";
 
-
-const  join = (a: number, b: number, c: number) => {
-   return `${a}_${b}_${c}`
+const sum = (arg1: number, arg2: number) => {
+  return arg1 + arg2
 }
 
-const curriedJoin = curryWithPlaceholder(join)
-const _ = curryWithPlaceholder.placeholder
+const memoed = memo(sum, () => 'sameKey');
+
+memoed(1, 2) 
+// 3, func is called
+
+memoed(1, 2) 
+// 3 is returned right away without calling func
+
+memoed(1, 3)
+// 4, new arguments, so func is called
+
+// const  join = (a: number, b: number, c: number) => {
+//    return `${a}_${b}_${c}`
+// }
+
+// const curriedJoin = curryWithPlaceholder(join)
+// const _ = curryWithPlaceholder.placeholder
 
 // const t1 = curriedJoin(1, 2, 3) // '1_2_3'
 
 // const t2 = curriedJoin(_, 2)(1, 3) // '1_2_3'
 // console.log(t2);
-const t3 = curriedJoin(_, _, _)(1)(_, 3)(2) // '1_2_3'
+// const t3 = curriedJoin(_, _, _)(1)(_, 3)(2) // '1_2_3'
 
 // console.log(t1, t2, t3);
 
