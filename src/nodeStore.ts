@@ -21,15 +21,17 @@ export class NodeStore {
    * @param {Node} node
    * @param {any} value
    */
+
+  store = {};
   set(node, value) {
-   
+    this.store[node] = value;
   }
   /**
    * @param {Node} node
    * @return {any}
    */
   get(node) {
-   
+    return this.store[node];
   }
   
   /**
@@ -37,6 +39,6 @@ export class NodeStore {
    * @return {Boolean}
    */
   has(node) {
-    
+    return this.store.hasOwnProperty(node);
   }
 }
