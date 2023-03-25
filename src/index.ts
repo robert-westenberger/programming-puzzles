@@ -4,21 +4,49 @@
 // import { throttle } from "./throttle";
 // import { debounce } from './debounce';
 // import { curry as curryWithPlaceholder } from "./curryWithPlaceholder";
-import { memo } from "./memo";
+// import { memo } from "./memo";
+import { pipe } from "./pipe";
 
-const sum = (arg1: number, arg2: number) => {
-  return arg1 + arg2
-}
+const times = (y: number) =>  (x: number) => x * y;
+const plus = (y: number) => (x: number) => x + y;
+const subtract = (y: number) =>  (x: number) => x - y;
+const divide = (y: number) => (x: number) => x / y;
 
-const memoed = memo(sum, () => 'sameKey');
+const test1 = pipe([
+   times(2),
+   times(3)
+]);
+console.log(test1(2));
+// x * 2 * 3
 
-memoed(1, 2) 
-// 3, func is called
+const test2 = pipe([
+   times(2),
+   plus(3),
+   times(4)
+]);
+console.log(test2(1), (1 * 2 + 3) * 4);
+// (x * 2 + 3) * 4
 
-memoed(1, 2) 
-// 3 is returned right away without calling func
+// pipe([
+//    times(2),
+//    subtract(3),
+//    divide(4)
+// ]) 
+// (x * 2 - 3) / 4
 
-memoed(1, 3)
+// const sum = (arg1: number, arg2: number) => {
+//   return arg1 + arg2
+// }
+
+// const memoed = memo(sum, () => 'sameKey');
+
+// memoed(1, 2) 
+// // 3, func is called
+
+// memoed(1, 2) 
+// // 3 is returned right away without calling func
+
+// memoed(1, 3)
 // 4, new arguments, so func is called
 
 // const  join = (a: number, b: number, c: number) => {
