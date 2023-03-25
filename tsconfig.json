@@ -1,0 +1,20 @@
+{
+  "extends": "@tsconfig/node18/tsconfig.json",
+     "compilerOptions": {
+      "lib": ["dom", "dom.iterable", "esnext"],
+      "module": "CommonJS",
+      "target": "ES2015",
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "isolatedModules": true,
+      "moduleResolution": "node",
+      "noFallthroughCasesInSwitch": true,
+      "skipLibCheck": true,
+      "strict": true,
+      "noEmit": false,
+      "outDir": "dist"
+    },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

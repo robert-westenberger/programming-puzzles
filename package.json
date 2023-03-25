@@ -1,0 +1,21 @@
+{
+  "name": "competitive-programming",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "dev": "tsc && concurrently \"tsc -w\" \"nodemon dist/index.js\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tsconfig/node18": "1.0.1",
+    "concurrently": "^7.6.0",
+    "expect": "^29.5.0",
+    "nodemon": "^2.0.21",
+    "typescript": "5.0.2"
+  }
+}
