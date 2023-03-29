@@ -6,20 +6,31 @@
 // import { curry as curryWithPlaceholder } from "./curryWithPlaceholder";
 // import { memo } from "./memo";
 // import { pipe } from "./pipe";
-import { excludeItems } from "./improveAFunction";
+// import { excludeItems } from "./improveAFunction";
+import { all } from "./promiseAll";
 
-const items = [
-   {color: 'red', type: 'tv', age: 18}, 
-   {color: 'silver', type: 'phone', age: 20},
-   {color: 'blue', type: 'book', age: 17}
-];
+const promise1 = Promise.resolve(3);
+const promise2 = 42;
+const promise3 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 100, 'foo');
+});
 
-const excludes = [ 
-   {k: 'color', v: 'silver'}, 
-   {k: 'type', v: 'tv'}, 
-];
+all([promise1, promise2, promise3]).then((values) => {
+  console.log(values);
+}); // Expected output: Array [3, 42, "foo"]
 
-excludeItems(items, excludes);
+// const items = [
+//    {color: 'red', type: 'tv', age: 18}, 
+//    {color: 'silver', type: 'phone', age: 20},
+//    {color: 'blue', type: 'book', age: 17}
+// ];
+
+// const excludes = [ 
+//    {k: 'color', v: 'silver'}, 
+//    {k: 'type', v: 'tv'}, 
+// ];
+
+// excludeItems(items, excludes);
 
 // const times = (y: number) =>  (x: number) => x * y;
 // const plus = (y: number) => (x: number) => x + y;
