@@ -5,26 +5,40 @@
 // import { debounce } from './debounce';
 // import { curry as curryWithPlaceholder } from "./curryWithPlaceholder";
 // import { memo } from "./memo";
-import { pipe } from "./pipe";
+// import { pipe } from "./pipe";
+import { excludeItems } from "./improveAFunction";
 
-const times = (y: number) =>  (x: number) => x * y;
-const plus = (y: number) => (x: number) => x + y;
-const subtract = (y: number) =>  (x: number) => x - y;
-const divide = (y: number) => (x: number) => x / y;
+const items = [
+   {color: 'red', type: 'tv', age: 18}, 
+   {color: 'silver', type: 'phone', age: 20},
+   {color: 'blue', type: 'book', age: 17}
+];
 
-const test1 = pipe([
-   times(2),
-   times(3)
-]);
-console.log(test1(2));
-// x * 2 * 3
+const excludes = [ 
+   {k: 'color', v: 'silver'}, 
+   {k: 'type', v: 'tv'}, 
+];
 
-const test2 = pipe([
-   times(2),
-   plus(3),
-   times(4)
-]);
-console.log(test2(1), (1 * 2 + 3) * 4);
+excludeItems(items, excludes);
+
+// const times = (y: number) =>  (x: number) => x * y;
+// const plus = (y: number) => (x: number) => x + y;
+// const subtract = (y: number) =>  (x: number) => x - y;
+// const divide = (y: number) => (x: number) => x / y;
+
+// const test1 = pipe([
+//    times(2),
+//    times(3)
+// ]);
+// console.log(test1(2));
+// // x * 2 * 3
+
+// const test2 = pipe([
+//    times(2),
+//    plus(3),
+//    times(4)
+// ]);
+// console.log(test2(1), (1 * 2 + 3) * 4);
 // (x * 2 + 3) * 4
 
 // pipe([
