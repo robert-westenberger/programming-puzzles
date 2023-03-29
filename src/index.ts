@@ -7,17 +7,17 @@
 // import { memo } from "./memo";
 // import { pipe } from "./pipe";
 // import { excludeItems } from "./improveAFunction";
-import { all } from "./promiseAll";
+// import { all } from "./promiseAll";
+import { firstBadVersion } from "./firstBadVersion";
+// const promise1 = Promise.resolve(3);
+// const promise2 = 42;
+// const promise3 = new Promise((resolve, reject) => {
+//   setTimeout(resolve, 100, 'foo');
+// });
 
-const promise1 = Promise.resolve(3);
-const promise2 = 42;
-const promise3 = new Promise((resolve, reject) => {
-  setTimeout(resolve, 100, 'foo');
-});
-
-all([promise1, promise2, promise3]).then((values) => {
-  console.log(values);
-}); // Expected output: Array [3, 42, "foo"]
+// all([promise1, promise2, promise3]).then((values) => {
+//   console.log(values);
+// }); // Expected output: Array [3, 42, "foo"]
 
 // const items = [
 //    {color: 'red', type: 'tv', age: 18}, 
