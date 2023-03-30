@@ -17,5 +17,8 @@
     "expect": "29.5.0",
     "nodemon": "2.0.21",
     "typescript": "5.0.2"
+  },
+  "dependencies": {
+    "@datastructures-js/priority-queue": "4.1.0"
   }
 }
