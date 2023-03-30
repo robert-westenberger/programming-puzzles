@@ -5,12 +5,12 @@ Given the array of integers nums, you will choose two different indices i and j 
 export function maxProduct(nums: number[]): number {
 
 
-  const maxPriorityQueue = new MaxPriorityQueue<number>();
+  const maxPriorityQueue = new MaxPriorityQueue();
 
   nums.forEach(num => {
-    maxPriorityQueue.enqueue(num);
+    maxPriorityQueue.enqueue(num, num);
   });
   const val1 = maxPriorityQueue.dequeue();
   const val2 = maxPriorityQueue.dequeue();
-  return ((val1 -1) * (val2 - 1));
+  return ((val1.element -1) * (val2.element - 1));
 };
