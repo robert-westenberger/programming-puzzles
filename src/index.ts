@@ -12,9 +12,17 @@
 // import { answerQueries } from "./longestSubsequenceWithLimitedSum";
 // import { maxProduct } from "./maximumProductOfTwoElementsInAnArray";
 // import { kWeakestRows } from "./kWeakestRows";
-import { intersection } from "./intersectionOfTwoArrays";
+// import { intersection } from "./intersectionOfTwoArrays";
+// import { missingNumber } from "./missingNumber";
+import { createSinglyLinkedListFromArray } from "./utils";
+import { reverseList } from "./reverseALinkedList";
 
-console.log(intersection([1, 2, 2,1], [2, 2]));
+
+
+console.log(reverseList(createSinglyLinkedListFromArray([1,2,3,4,5])));
+
+// console.log(missingNumber([0, 1, 2, 4, 5])); // 3
+// console.log(intersection([1, 2, 2,1], [2, 2]));
 // const matrix = [
 //   [1,1,0,0,0],
 //   [1,1,1,1,0],

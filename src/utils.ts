@@ -68,3 +68,22 @@ export class PriorityQueue<T> {
     }
   }
 }
+
+export class ListNode {
+  val: number;
+  next: ListNode | null;
+  constructor(val?: number, next?: ListNode | null) {
+    this.val = (val===undefined ? 0 : val);
+    this.next = (next===undefined ? null : next) 
+  }
+}
+
+export function createSinglyLinkedListFromArray(arr: number[]) {
+  const headPtr = new ListNode(arr[0]);
+  let ptr = headPtr;
+  for (let i = 1; i < arr.length; i++){
+    ptr.next = new ListNode(arr[i]);
+    ptr = ptr.next;
+  }
+  return headPtr;
+}
