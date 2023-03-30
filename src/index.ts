@@ -10,9 +10,19 @@
 // import { all } from "./promiseAll";
 // import { firstBadVersion } from "./firstBadVersion";
 // import { answerQueries } from "./longestSubsequenceWithLimitedSum";
-import { maxProduct } from "./maximumProductOfTwoElementsInAnArray";
+// import { maxProduct } from "./maximumProductOfTwoElementsInAnArray";
+import { kWeakestRows } from "./kWeakestRows";
 
-console.log(maxProduct([3,4,5,2])); // 12
+const matrix = [
+  [1,1,0,0,0],
+  [1,1,1,1,0],
+  [1,0,0,0,0],
+  [1,1,0,0,0],
+  [1,1,1,1,1]];
+console.log(kWeakestRows(matrix, 3)); // [2, 0, 3]
+
+
+// console.log(maxProduct([3,4,5,2])); // 12
 
 
 

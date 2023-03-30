@@ -1,3 +1,4 @@
+import { PriorityQueue } from "./utils";
 /*
 You are given an m x n binary matrix mat of 1's (representing soldiers) and 0's (representing civilians). The soldiers are positioned in front of the civilians. That is, all the 1's will appear to the left of all the 0's in each row.
 
@@ -9,7 +10,23 @@ Return the indices of the k weakest rows in the matrix ordered from weakest to s
 
 */
 
-export function kWeakestRows(mat: number[][], k: number): number[] {
+interface RowData {
+  row: number[];
+  index: number;
+}
 
-  return [1,2];
+// FIXME: This is broken.
+export function kWeakestRows(mat: number[][], k: number): number[] {
+  const answer: number[] = [];
+  const rowQueue = new PriorityQueue<RowData>((a, b) => {
+    // TODO: Convert to binary search
+    return a.row.filter(val => val === 1).length > b.row.filter(val => val === 1).length;
+  });
+  mat.forEach((row, index) => {
+    rowQueue.push({row, index});
+  });
+  for (let i = 0; i < k; i++) {
+    answer.push(rowQueue.pop().index);
+  }
+  return answer;
 };
