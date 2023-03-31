@@ -14,12 +14,13 @@
 // import { kWeakestRows } from "./kWeakestRows";
 // import { intersection } from "./intersectionOfTwoArrays";
 // import { missingNumber } from "./missingNumber";
-import { createSinglyLinkedListFromArray } from "./utils";
-import { reverseList } from "./reverseALinkedList";
+// import { createSinglyLinkedListFromArray } from "./utils";
+// import { reverseList } from "./reverseALinkedList";
+import { search } from "./searchInRotatedSortedArray";
 
+console.log(search([4,5,6,7,0,1,2], 0));
 
-
-console.log(reverseList(createSinglyLinkedListFromArray([1,2,3,4,5])));
+// console.log(reverseList(createSinglyLinkedListFromArray([1,2,3,4,5])));
 
 // console.log(missingNumber([0, 1, 2, 4, 5])); // 3
 // console.log(intersection([1, 2, 2,1], [2, 2]));
