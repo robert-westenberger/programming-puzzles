@@ -16,9 +16,11 @@
 // import { missingNumber } from "./missingNumber";
 // import { createSinglyLinkedListFromArray } from "./utils";
 // import { reverseList } from "./reverseALinkedList";
-import { search } from "./searchInRotatedSortedArray";
+// import { search } from "./searchInRotatedSortedArray";
+import { partitionLabels } from "./partitionLabels";
 
-console.log(search([4,5,6,7,0,1,2], 0));
+console.log(partitionLabels("ababcbacadefegdehijhklij"));
+// console.log(search([4,5,6,7,0,1,2], 0));
 
 // console.log(reverseList(createSinglyLinkedListFromArray([1,2,3,4,5])));
 
