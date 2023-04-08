@@ -17,9 +17,41 @@
 // import { createSinglyLinkedListFromArray } from "./utils";
 // import { reverseList } from "./reverseALinkedList";
 // import { search } from "./searchInRotatedSortedArray";
-import { partitionLabels } from "./partitionLabels";
+// import { partitionLabels } from "./partitionLabels";
+// import { canJump } from "./jumpGame";
+// import { promiseExperiment } from "./promiseExperiment";
+import { debounce } from "./debounce";
 
-console.log(partitionLabels("ababcbacadefegdehijhklij"));
+
+let currentTime = 0
+
+const run = (input: string[]) => {
+  currentTime = 0
+  const calls: string[] = []
+
+  const func = (arg: string) => {
+     calls.push(`${arg}@${currentTime}`)
+  }
+
+  const throttled = debounce(func, 3)
+  input.forEach((call) => {
+     const [arg, time] = call.split('@')
+     setTimeout(() => throttled(arg), parseInt(time, 10))
+  })
+  return calls
+}
+
+const answer = run(['A@0', 'B@2', 'C@3']);
+
+
+setTimeout(() => {
+  console.log(answer);
+}, 500)
+
+// promiseExperiment();
+// console.log([3,2,1,0,4], canJump([3,2,1,0,4]));
+// console.log([2,3,1,1,4], canJump([2,3,1,1,4]));
+// console.log(partitionLabels("ababcbacadefegdehijhklij"));
 // console.log(search([4,5,6,7,0,1,2], 0));
 
 // console.log(reverseList(createSinglyLinkedListFromArray([1,2,3,4,5])));
