@@ -1,76 +1,75 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
-    <script>
-      const myFn = () => {
-        console.log('clicked!');
-      }
-      const isDebounced = (startTime, currentTime, wait) => (currentTime - startTime) > wait;
-      function debounce(func, wait) {
-          let debounceTimer = undefined;
-          const setDebounceTimer = () => {
-            console.log('setting debounce timer..');
-            debounceTimer = performance.now();
-          };
 
-          
-        
-          return function (...args) {
-              setDebounceTimer();
-            
-              const currentTime = performance.now(); 
-              
-              
-            
-              function tryExecuting(timestamp) {
-                if (isDebounced(debounceTimer, timestamp, wait)) {
-                func(...args);
-                
-                
-              } else {
-                requestAnimationFrame(tryExecuting);
-              }
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="">
+  <script>
+    const myFn = () => {
+      console.log('clicked!');
+    }
 
-            }
+    function debounce(func, wait) {
+      // internal id to keep track of subsequent calls to this fn
+      let debounceId = null;
+      let debounceTimer = undefined;
+      // immediately return the debounced function...
+      return function (...args) {
+        // if we don't have a debounceId yet, make one. 
+        // Just use the current timestamp for this.
+        const currentTime = performance.now();
 
-              
+        // Initialize the debounceTimer.
+        // Every time this function is called, it gets
+        // set to whatever the current time is.
+        debounceTimer = currentTime;
+
+
+        if (!debounceId) {
+          debounceId = currentTime;
+
+          /*
+          We also need to use RAF to keep checking whether 
+          we can call the debounced function. It needs 
+          to be inside this block because this 
+          block only executes once per "group" of debounced
+          function calls. After the debounced function is called,
+          it needs nullify the debounceId so the process can start over.
+          */
+
+          function tryExecuting(timestamp) {
+            // console.log(debounceTimer, timestamp);
+            const elapsedTimeSinceLastClick = timestamp - debounceTimer;
+            if (elapsedTimeSinceLastClick < wait) {
               requestAnimationFrame(tryExecuting);
-              
-            
-          };
+
+            } else {
+              func(...args);
+              debounceId = null;
+            }
+          }
+          requestAnimationFrame(tryExecuting);
         }
-        window.addEventListener('click', debounce(myFn, 1000));
-        // let currentTime = 0;
-        //   const run = (input) => {
-        //     currentTime = 0;
-        //     const calls = [];
-        //     const func = (arg) => {
-        //       calls.push(`${arg}@${currentTime}`);
-        //     };
-        //     const debounced = (0, debounce)(func, 100);
-        //     input.forEach((call) => {
-        //       const [arg, time] = call.split('@');
-        //       setTimeout(() => debounced(arg), parseInt(time, 100));
-        //     });
-        //     return calls;
-        //   };
-        //   const answer = run(['A@0', 'B@2', 'C@3']);
-        //   setTimeout(() => {
-        //     console.log(answer);
-        //   }, 500);
-    </script>
-  </head>
-  <body>
-    <!--[if lt IE 7]>
+
+      }
+
+
+    }
+    window.addEventListener('click', debounce(myFn, 1000));
+
+  </script>
+</head>
+
+<body>
+  <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    
-    <script src="" async defer></script>
-  </body>
+
+  <script src="" async defer></script>
+</body>
+
 </html>
