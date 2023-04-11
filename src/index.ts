@@ -20,7 +20,8 @@
 // import { partitionLabels } from "./partitionLabels";
 // import { canJump } from "./jumpGame";
 // import { promiseExperiment } from "./promiseExperiment";
+// import { arrMap } from "./arrMap";
+import { findDisappearedNumbersProblem } from "./findDisappearedNumbers";
 
-import { arrMap } from "./arrMap";
-
-arrMap();
+findDisappearedNumbersProblem();
+// arrMap();
